@@ -1,4 +1,4 @@
-package br.com.rafamuvi.jetpack_compose_simple_template
+package br.com.rafamuvi.compose_login_page
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("br.com.rafamuvi.jetpack_compose_simple_template", appContext.packageName)
+        assertEquals("br.com.rafamuvi.compose_login_page", appContext.packageName)
     }
 }

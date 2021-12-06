@@ -1,20 +1,20 @@
-# This is a simple Android Jetpack Compose Template
+# Jetpack Compose Login Page Sample
 ---
 
-## Why?
+## What's this?
 ---
 
-- This is a template for studies purposes, so it is easier to clone and start a new Study Project;
+- This is a simple Login Page with SplashScreen;
+- Used Animation for the SplashScreen and Brush for gradient background;
 - Made CI workflow with GitHub Actions;
 ---
 
 ## How can I use it?
 ---
 
-- As a template, you just have to click on "Use this template" button;
-- Create your repository;
-- Clone it;
-- Be happy coding
+- If you want to check the App just download the APK on the GitHub Actions Tab;
+- Drag the .apk into the emulator;
+- And be happy!
 
 ## GitHub Actions
 ---

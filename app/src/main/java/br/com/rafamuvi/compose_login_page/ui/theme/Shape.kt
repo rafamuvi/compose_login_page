@@ -1,4 +1,4 @@
-package br.com.rafamuvi.jetpack_compose_simple_template.ui.theme
+package br.com.rafamuvi.compose_login_page.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

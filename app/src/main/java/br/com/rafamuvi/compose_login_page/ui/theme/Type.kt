@@ -1,4 +1,4 @@
-package br.com.rafamuvi.jetpack_compose_simple_template.ui.theme
+package br.com.rafamuvi.compose_login_page.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

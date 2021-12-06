@@ -1,4 +1,4 @@
-package br.com.rafamuvi.jetpack_compose_simple_template
+package br.com.rafamuvi.compose_login_page
 
 import org.junit.Test
 
