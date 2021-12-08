@@ -1,4 +1,4 @@
-package br.com.rafamuvi.compose_login_page
+package br.com.rafamuvi.compose_login_page.screens
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
@@ -12,13 +12,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import br.com.rafamuvi.compose_login_page.navigation.Screen
+import br.com.rafamuvi.compose_login_page.ui.theme.MyPinky
+import br.com.rafamuvi.compose_login_page.ui.theme.MyPurple
+import br.com.rafamuvi.compose_login_page.ui.theme.Purple200
 import compose_login_page.R
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen() {
+fun SplashScreen(
+    navController: NavController
+) {
 
     val scale = remember {
         Animatable(0f)
@@ -34,13 +43,27 @@ fun SplashScreen() {
                 }
             )
         )
-        delay(1000)
+        delay(500)
+        navController.navigate(route = Screen.Login.route) {
+            popUpTo("splash_screen") {
+                inclusive = true
+            }
+        }
     }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFFFFFFF))
+            .background(
+                Brush.linearGradient(
+                    listOf(
+                        MyPinky,
+                        MyPurple,
+                        Purple200
+                    )
+                )
+            )
+        //.background(Color(0xFFFFFFFF))
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -56,4 +79,10 @@ fun SplashScreen() {
 
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SplashPreview() {
+    SplashScreen(navController = rememberNavController())
 }
