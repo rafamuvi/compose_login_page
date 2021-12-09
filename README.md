@@ -5,11 +5,13 @@
 ---
 
 - This is a simple Login Page with SplashScreen;
-- Used: 
-    - LauchedEffect for Animation on the SplashScreen;
-    - NavigationController;
+- Learned:
     - Custom Composables;
-    - Brush for gradient background;
+    - LaunchedEffect to make the SplashScreen animation;
+    - NavController for navigation;
+    - Brush to make gradients backgrounds;
+    - keyboardController to hide keyboard in imeAction;
+    - relocationRequester to bring Into View some composable;
 - Made CI workflow with GitHub Actions;
 ---
 
