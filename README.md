@@ -5,7 +5,11 @@
 ---
 
 - This is a simple Login Page with SplashScreen;
-- Used Animation for the SplashScreen and Brush for gradient background;
+- Used: 
+    - LauchedEffect for Animation on the SplashScreen;
+    - NavigationController;
+    - Custom Composables;
+    - Brush for gradient background;
 - Made CI workflow with GitHub Actions;
 ---
 
