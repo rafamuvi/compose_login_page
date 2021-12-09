@@ -21,11 +21,14 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -81,19 +84,42 @@ fun LoginPage(
                         .fillMaxSize()
                         .padding(20.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
+                    verticalArrangement = Arrangement.Top
                 ) {
+                    Text(
+                        text = "Welcome back!",
+                        style = TextStyle(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 30.sp,
+                            fontFamily = FontFamily.Cursive
+                        )
+                    )
+                    Spacer(modifier = Modifier.padding(10.dp))
                     UsernameField(keyboardController)
                     Spacer(modifier = Modifier.padding(10.dp))
                     PasswordField(keyboardController)
-                    Spacer(modifier = Modifier.padding(10.dp))
+                    Spacer(modifier = Modifier.padding(20.dp))
                     LoginButton(color = Color(0xFF00B7FF), text = "Log In") {
-
+                        navController.navigate(route = Screen.Home.route) {
+                            popUpTo("login_page") {
+                                inclusive = true
+                            }
+                        }
                     }
-                    Spacer(modifier = Modifier.padding(10.dp))
-                    LoginButton(color = Color(0xFF0088FF), text = "Sign Up") {
-                        navController.navigate(route = Screen.LoginInput.route) {
-                            popUpTo("login_page")
+                    Row {
+                        CustomTextButton(text = "Sign Up") {
+                            navController.navigate(route = Screen.SignUp.route) {
+                                popUpTo("login_page") {
+                                    inclusive = false
+                                }
+                            }
+                        }
+                        CustomTextButton(text = "Forgot Password?") {
+                            navController.navigate(route = Screen.Forgot.route) {
+                                popUpTo("login_page") {
+                                    inclusive = false
+                                }
+                            }
                         }
                     }
                 }
@@ -105,13 +131,13 @@ fun LoginPage(
 @ExperimentalComposeUiApi
 @Composable
 fun UsernameField(keyboardController: SoftwareKeyboardController?) {
-    var text by remember { mutableStateOf("") }
+    var userText by remember { mutableStateOf("") }
     val relocationRequester = remember { RelocationRequester() }
 
     OutlinedTextField(
-        value = text,
+        value = userText,
         onValueChange = {
-            text = it
+            userText = it
         },
         modifier = Modifier
             .fillMaxWidth()
@@ -120,7 +146,7 @@ fun UsernameField(keyboardController: SoftwareKeyboardController?) {
         shape = RoundedCornerShape(50),
         leadingIcon = { Icon(Icons.Default.AccountCircle, null) },
         trailingIcon = {
-            IconButton(onClick = { text = "" }) {
+            IconButton(onClick = { userText = "" }) {
                 Icon(Icons.Default.Close, null)
             }
         },
@@ -137,14 +163,14 @@ fun UsernameField(keyboardController: SoftwareKeyboardController?) {
 @ExperimentalComposeUiApi
 @Composable
 fun PasswordField(keyboardController: SoftwareKeyboardController?) {
-    var text by remember { mutableStateOf("") }
+    var passText by remember { mutableStateOf("") }
     var isVisible by remember { mutableStateOf(false) }
     val relocationRequester = remember { RelocationRequester() }
 
     OutlinedTextField(
-        value = text,
+        value = passText,
         onValueChange = {
-            text = it
+            passText = it
             relocationRequester.bringIntoView()
         },
         modifier = Modifier
@@ -195,6 +221,30 @@ fun LoginButton(
         )
     }
 }
+
+@Composable
+fun CustomTextButton(
+    text: String,
+    onClick: () -> Unit,
+
+    ) {
+
+    TextButton(onClick = onClick) {
+        Text(
+            text = text,
+            modifier = Modifier.padding(10.dp),
+            style = TextStyle(
+                color = Color(0, 154, 255, 255),
+                fontSize = 16.sp,
+                fontStyle = FontStyle.Italic,
+                fontWeight = FontWeight.SemiBold,
+                textDecoration = TextDecoration.Underline
+            )
+        )
+    }
+
+}
+
 
 @ExperimentalComposeUiApi
 @Preview(showBackground = true)
